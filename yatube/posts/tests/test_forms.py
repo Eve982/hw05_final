@@ -75,7 +75,7 @@ class PostFormTests(TestCase):
             group=self.group.id,
             author=self.author,
             text='Тестовый текст',
-            ).exists())
+        ).exists())
         self.assertEqual(list(create_post_form_data['image'].chunks()),
                          list(self.image.chunks()))
 
