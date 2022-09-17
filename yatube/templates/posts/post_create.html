@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Новый пост{% endblock %}
+{% block content %}
+{% if is_edit %}
+  {% include '../users/includes/card_with_form.html' with card_header='Редактировать запись' form_button='Сохранить' %}
+{% else %}
+  {% include '../users/includes/card_with_form.html' with card_header='Добавить запись' form_button='Добавить' %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Войти{% endblock %}
+{% block content %}
+{% with form_button='Войти' is_link=True link='password_reset' link_text='Забыли пароль?' %}
+  {% include 'users/includes/card_with_form.html' with card_header='Войти на сайт' %}
+{% endwith %}
+{% endblock %}
