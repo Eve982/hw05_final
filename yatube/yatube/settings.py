@@ -103,6 +103,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+POST_TEXT_SHORT = 15
 POSTS_AMOUNT = 10
 
 STATIC_URL = '/static/'

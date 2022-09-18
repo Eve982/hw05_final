@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.conf import settings
 
 from posts.models import Group, Post, User
 
@@ -19,7 +20,7 @@ class PostModelTest(TestCase):
     def test_models_have_correct_object_names(self):
         """Проверяем, что у моделей корректно работает __str__."""
         post = self.post
-        self.assertEqual(str(post), post.text[:15])
+        self.assertEqual(str(post), post.text[:settings.POST_TEXT_SHORT])
 
         group = self.group
         self.assertEqual(str(group), group.title)

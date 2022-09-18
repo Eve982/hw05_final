@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.conf import settings
 
 from core.models import CreatedModel
 
@@ -28,31 +29,26 @@ class Group(models.Model):
 
 class Post(CreatedModel):
     text = models.TextField('Текст публикации',
-                            max_length=2000,
-                            help_text='* - обязательное поле. Введите текст'
-                            'публикации, не более 2000 символов.')
+                            max_length=2000,)
 
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
                                related_name='posts',
-                               verbose_name='Автор',
-                               help_text='Выберите автора публикации.')
+                               verbose_name='Автор',)
 
     group = models.ForeignKey(Group,
                               on_delete=models.SET_NULL,
                               blank=True,
                               null=True,
                               related_name='posts',
-                              verbose_name='Сообщество',
-                              help_text='Выберите группу к которой будет '
-                              'относиться запись.')
+                              verbose_name='Сообщество',)
     image = models.ImageField(
         'Картинка',
         upload_to='posts/',
         blank=True)
 
     def __str__(self):
-        return self.text[:15]
+        return self.text[:settings.POST_TEXT_SHORT]
 
     class Meta:
         ordering = ('-pub_date',)
@@ -80,8 +76,14 @@ class Comment(CreatedModel):
 
 class Follow(models.Model):
     user = models.ForeignKey(User,
+                             verbose_name='Подписчик',
                              related_name='follower',
                              on_delete=models.CASCADE,)
     author = models.ForeignKey(User,
+                               verbose_name='Автор',
                                related_name='following',
                                on_delete=models.CASCADE,)
+
+    class Meta:
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
