@@ -38,17 +38,3 @@ class PostModelTest(TestCase):
                 self.assertEqual(
                     self.post._meta.get_field(field).verbose_name,
                     expected_value)
-
-    def test_help_text(self):
-        """Проверяем, что help_text в полях совпадает с ожидаемым."""
-        fields_help_texts = {
-            'text': '* - обязательное поле. Введите текст'
-            'публикации, не более 2000 символов.',
-            'author': 'Выберите автора публикации.',
-            'group': 'Выберите группу к которой будет '
-                      'относиться запись.',
-        }
-        for field, expected_value in fields_help_texts.items():
-            with self.subTest(field=field):
-                self.assertEqual(
-                    self.post._meta.get_field(field).help_text, expected_value)
