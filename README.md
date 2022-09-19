@@ -3,6 +3,11 @@
 
 Сообщество для публикаций. Блог с возможностью публикации постов, подпиской на группы и авторов, а также комментированием постов.
 
+### **Проект загружен на хостинг по следующему адресу**
+```
+http://eve982.pythonanywhere.com
+```
+
 ### **Стек**
 ![python version](https://img.shields.io/badge/Python-3.7-green)
 ![django version](https://img.shields.io/badge/Django-2.2-green)
