@@ -1,8 +1,10 @@
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from dotenv import load_dotenv
 
-SECRET_KEY = 'z8x%n@8ebo8pb_f2p_5npkl5n+s1^_fz8b%011cj%h@3@3d=u&'
+load_dotenv()
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
 
@@ -10,6 +12,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
+    'ola.sytes.net',
     '127.0.0.1',
     '[::1]',
     'testserver',
